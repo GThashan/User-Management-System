@@ -3,20 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "express": "^4.19.2",
-    "express-ejs-layouts": "^2.5.1",
-    "express-flash-messages": "^0.1.1",
-    "express-sessions": "^1.0.6",
-    "method-override": "^3.0.0",
     "mongoose": "^8.4.1",
     "nodemon": "^3.1.3"
   }
