@@ -25,7 +25,7 @@ export const  createUser =async(req,res)=>{
     } catch (error) {
         return res.json({status:false,message:"Internal error"});
     }
-}
+};
 
 export const getUser = async(req,res)=>{
     try {
@@ -37,4 +37,20 @@ export const getUser = async(req,res)=>{
     } catch (error) {
         return res.json({status:false,message:"Internal server error"});
     }
+};
+
+
+export const updateUser = async(req,res)=>{
+  try {
+    const userID = req.params.id;
+    const updateUser = await User.findByIdAndUpdate(userID,req.body,{new:true});
+    if(!updateUser){
+      return res.json({status:false,message:"user not found"});
+    }
+    return res.json({status:true,message:"user update sucessfully"});
+  } catch (error) {
+    return res.json({status:false,message:"Internal server error"});
+  }
+
+
 }
