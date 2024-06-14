@@ -49,7 +49,7 @@ export const updateUser = async(req,res)=>{
     if(!updateUser){
       return res.json({status:false,message:"user not found"});
     }
-    
+
     return res.json({status:true,message:"user update sucessfully"});
 
   } catch (error) {
@@ -58,3 +58,22 @@ export const updateUser = async(req,res)=>{
 
 
 }
+
+export const deleteUser = async(req,res)=>{
+    try {
+  
+      const userID = req.params.id;
+      const deleteuser = await User.findByIdAndDelete(userID);
+  
+      if(!deleteuser){
+        return res.json({status:false,message:"user not found"});
+      }
+      
+      return res.json({status:true,message:"user delete sucessfully"});
+  
+    } catch (error) {
+      return res.json({status:false,message:"Internal server error"});
+    }
+  
+  
+  }
