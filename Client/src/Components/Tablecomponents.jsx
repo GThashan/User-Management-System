@@ -1,23 +1,53 @@
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Table } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'; 
 
 
 
 export default function Tablecomponents() {
-  const users = [ 
-    { id :"1",name: 'John Doe', email: 'john@example.com' ,NIC:"20023801925",Phone:"076761760",postion:"Employee"},
-    { id :"2", name: 'John Doe', email: 'john@example.com' ,NIC:"20023801925",Phone:"076761760",postion:"Employee"},
-    { id :"3", name: 'John Doe', email: 'john@example.com' ,NIC:"20023801925",Phone:"076761760",postion:"Employee"},
-    { id :"4", name: 'John Doe', email: 'john@example.com' ,NIC:"20023801925",Phone:"076761760",postion:"Employee"},
-    { id :"5", name: 'John Doe', email: 'john@example.com' ,NIC:"20023801925",Phone:"076761760",postion:"Employee"},
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
-   
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const fetchUsers = await axios.get('http://localhost:5000/api/getUser');
+        const response = fetchUsers.data;
+       
+        setData(response);
+      
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchData();
+  }, [data]);
+
+  const handleEdit = (userId) => {
+    navigate(`/update/${userId}`);
+  };
+  const handleDelete = async (userId) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/delete/${userId}`);
+     
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
 
-  ];
+
   return (
     <div className="table-content">
-    <h3 className='mt-3 mb-3'>Manage Employee data</h3>
+       <div className='d-flex justify-content-between align-items-center'>
+          <h3 className='mt-3 mb-3'>Manage Employee Data</h3>
+          <button onClick={() => navigate("/form")} className='btn btn-primary'>Add New</button>
+        </div>
+   
     <Table striped bordered hover variant="dark" className='table'>
       <thead>
         <tr>
@@ -31,20 +61,22 @@ export default function Tablecomponents() {
         </tr>
       </thead>
       <tbody>
-        {users.map(user => (
-          <tr key={user.id}>
-            <td>{user.id}</td>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{user.NIC}</td>
-            <td>{user.Phone}</td>
-            <td>{user.postion}</td>
-            <td>
-              <button className='btn btn-success me-2'>Edit</button>
-              <button className='btn btn-danger'>Delete</button>
+      {data.users?.map((elem, index) => (
+                <tr key={elem._id}>
+                  <td>{index + 1}</td>
+                  <td>{elem.username}</td>
+                  <td>{elem.email}</td>
+                  <td>{elem.NIC}</td>
+                  <td>{elem.Phone}</td>
+                  <td>{elem.position}</td>
+                  <td>
+              <button className='btn btn-success me-2'  onClick={() => handleEdit(elem._id)}>Edit</button>
+              <button className='btn btn-danger' onClick={() => handleDelete(elem._id)}>Delete</button>
             </td>
-          </tr>
-        ))}
+                </tr>
+              ))
+            }
+        
       </tbody>
     </Table>
   </div>

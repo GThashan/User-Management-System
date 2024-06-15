@@ -1,45 +1,63 @@
-import React, { useState} from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
-export default function Formcomponents() {
-  const [username, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [NIC, setNIC] = useState("");
-  const [Phone, setPhone] = useState("");
-  const [position, setPosition] = useState("");
+export default function UpdateComponents() {
+  const { userId } = useParams();
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [NIC, setNIC] = useState('');
+  const [Phone, setPhone] = useState('');
+  const [position, setPosition] = useState('');
+
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/getUser/${userId}`);
+        const user = response.data;
+        setUsername(user.username);
+        setEmail(user.email);
+        setNIC(user.NIC);
+        setPhone(user.Phone);
+        setPosition(user.position);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    }
+
+    fetchUser();
+  }, [userId]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/createUser',{
-        username,
-        email,
-        NIC,
-        Phone,
-        position
-      });
-      alert("record");
-      console.log("Server response:", response); 
-      navigate('/');
+      const updatedUser = {
+        username: username,
+        email: email,
+        NIC: NIC,
+        Phone: Phone,
+        position: position,
+      };
+
+      await axios.put(`http://localhost:5000/api/update/${userId}`, updatedUser);
+      
+      alert("updated sucessful");
+      navigate('/table');
+
     } catch (error) {
-      console.log("Error occurred:", error);
-      if (error.response) {
-        console.log("Server responded with status code", error.response.status);
-        console.log("Response data:", error.response.data);
-      }
-      alert("An error occurred while submitting the form. Please try again.");
+      console.error('Error updating user:', error);
     }
   };
+
   return (
     <>
       <div className="dashboard">
-        <h1>Add New Employee</h1>
+        <h1>Update Employee</h1>
       </div>
       <div className="form-content">
-        <h1>New Employee</h1>
+        <h1>Reset Details</h1>
         <Form onSubmit={handleSubmit}>
           <div className='form-group'>
             <Form.Group controlId="formName">
@@ -47,7 +65,7 @@ export default function Formcomponents() {
               <Form.Control
                 type="text"
                 value={username}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter name"
               />
             </Form.Group>
@@ -94,7 +112,7 @@ export default function Formcomponents() {
           </div>
 
           <Button variant="primary" type="submit" className='mt-5 p-2'>
-            Submit
+            Update
           </Button>
         </Form>
       </div>

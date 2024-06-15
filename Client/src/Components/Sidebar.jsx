@@ -28,9 +28,9 @@ export default function Sidebar({ navigation }) {
           <p className="nav_item">Manage</p>
         </Nav.Item>
 
-        <Nav.Item className="fs-5 mt-2 mb-2 nav__item" onClick={() => handleNavigation('/form')}>
+        {/* <Nav.Item className="fs-5 mt-2 mb-2 nav__item" onClick={() => handleNavigation('/form')}>
           <p className="nav_item">Add new</p>
-        </Nav.Item>
+        </Nav.Item> */}
       </Nav>
     </div>
   );
