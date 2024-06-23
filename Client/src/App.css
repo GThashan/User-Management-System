@@ -1,80 +1,81 @@
-/* src/App.css */
-.d-flex {
-    display: flex;
-  }
-  
-  .sidebar {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-  
-  }
-  
-  .content {
-    margin-left: 250px;
-    padding: 20px;
-  }
-  
-  
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+}
+
+.content {
+  margin-left: 200px;
+  /* padding: 20px; */
+}
+
+.form-content {
+  padding: 30px;
+  background-color: #343a40;
+  color: white;
+  border-radius: 5px;
  
-  .form-content {
-    
-    padding: 15px;
-    background-color: #343a40;
-    color: white;
-    border-radius: 5px;
-    width: 1300px;
-    margin-top: 10px;
-  
-  }
-  .form_group{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-  }
-  .dashboard{
-    padding: 20px;
-    background-color: #343a40;
-    color: white;
-    border-radius: 5px;
-    width: 1300px;
-    margin: 0;
-  }
-.profile{
-    width: 100px;
-    height: 100px;
-    border-radius: 90%;
-    border: 2px solid white;
-}  
-
-.slide{
-    background-color: #343a40;
- background-blend-mode: multiply;
+  margin-top: 10px;
 }
-.nav_item{
-    color: white;
-}
-.nav_item:hover{
-    color: rgb(8, 7, 7);
-    text-align: center;
+.form_group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
 }
 
-.nav__item:hover{
-    background-color: white;
-    width: 100%;
-    color: black;
+.dashboard  h1{
+  font-size: 25px;
+  font-weight: bold;
 }
-.table-content{
-    padding: 15px;
-    background-color: #343a40;
-    color: white;
-    border-radius: 5px;
-    width: 1300px;
-    margin-top: 10px;
+.form-content h1{
+  font-size: 25px;
+  font-weight: bold;
 }
-.table{
-    margin-top: 30px;
-    width: 800px;
-    border-radius: 5px;
-    padding: 20px;
+.profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 90%;
+  border: 2px solid white;
+  align-self: center;
+}
+
+.slide {
+  background-color: #343a40;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.nav_item {
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+.nav_item:hover {
+  color: rgb(8, 7, 7);
+  text-align: center;
+}
+
+.nav__item:hover {
+  background-color: white;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+.table-content {
+  flex: 1;
+  background-color: #343a40;
+  color: white;
+  border-radius: 3px;
+ padding: 1px;
+  margin-top: 10px;
+}
+.table {
+  margin-top: 30px;
+  /* width: auto; */
+  border-radius: 5px;
+  /* padding: 30px; */
 }
