@@ -43,9 +43,9 @@ export default function Tablecomponents() {
 
   return (
     <div className="table-content">
-       <div className='d-flex justify-content-between align-items-center'>
-          <h3 className='mt-3 mb-3'>Manage Employee Data</h3>
-          <button onClick={() => navigate("/form")} className='btn btn-primary'>Add New</button>
+       <div className='d-flex justify-content-between align-items-center p-2'>
+          <h5 className='mt-3 mb-3'>Manage Employee Data</h5>
+          <button onClick={() => navigate("/form")} className='btn btn-sm btn-primary'>Add New</button>
         </div>
    
     <Table striped bordered hover variant="dark" className='table'>
@@ -70,8 +70,8 @@ export default function Tablecomponents() {
                   <td>{elem.Phone}</td>
                   <td>{elem.position}</td>
                   <td>
-              <button className='btn btn-success me-2'  onClick={() => handleEdit(elem._id)}>Edit</button>
-              <button className='btn btn-danger' onClick={() => handleDelete(elem._id)}>Delete</button>
+              <button className='btn btn-sm btn-success me-2'  onClick={() => handleEdit(elem._id)}>Edit</button>
+              <button className='btn btn-sm btn-danger' onClick={() => handleDelete(elem._id)}>Delete</button>
             </td>
                 </tr>
               ))

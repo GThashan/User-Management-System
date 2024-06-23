@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
+import Sidebar from './Sidebar';
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
@@ -23,11 +24,12 @@ export default function Dashboard() {
 
   return (
     <>
+   
       <div className="dashboard">
         <h1>Welcome to the Dashboard</h1>
       </div>
       <div className="table-content">
-        <h3 className="mt-3 mb-3">Employee Data</h3>
+        <h3 className="mt-3 mb-3 fs-5">Employee Data</h3>
         <Table striped bordered hover variant="dark" className="table">
           <thead>
             <tr>

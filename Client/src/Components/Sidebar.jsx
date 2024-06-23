@@ -10,14 +10,14 @@ export default function Sidebar({ navigation }) {
   };
 
   return (
-    <div className="bg-dark text-white sidebar p-4">
+    <div className="bg-dark text-white sidebar p-2">
       <Nav className="flex-column">
         <img
           src="https://cdn.pixabay.com/photo/2019/11/03/23/28/black-businessman-4599849_640.jpg"
           alt="Profile"
           className="profile mb-4 mt-4"
         />
-        <h3 className="b">Admin Dashboard</h3>
+        <h3 className="b text-uppercase fs-5 text-center">Admin Board</h3>
         <hr />
 
         <Nav.Item className="fs-5 mt-2 mb-2 nav__item" onClick={() => handleNavigation('/')}>
@@ -28,9 +28,7 @@ export default function Sidebar({ navigation }) {
           <p className="nav_item">Manage</p>
         </Nav.Item>
 
-        {/* <Nav.Item className="fs-5 mt-2 mb-2 nav__item" onClick={() => handleNavigation('/form')}>
-          <p className="nav_item">Add new</p>
-        </Nav.Item> */}
+       
       </Nav>
     </div>
   );

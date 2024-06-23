@@ -16,7 +16,7 @@ function App() {
   return (
     
     <Router>
-    <div className="d-flex">
+    <div>
       <Sidebar />
       <div className="content p-4">
         <Routes>
