@@ -9,7 +9,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const fetchUsers = await axios.get('http://localhost:5000/api/getUser');
+        const fetchUsers = await axios.get('http://localhost:1000/api/getUser');
         const response = fetchUsers.data;
        
         setData(response);
