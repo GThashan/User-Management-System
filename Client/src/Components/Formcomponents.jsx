@@ -14,7 +14,7 @@ export default function Formcomponents() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/createUser',{
+      const response = await axios.post('http://localhost:1000/api/createUser',{
         username,
         email,
         NIC,

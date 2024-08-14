@@ -13,7 +13,7 @@ export default function Tablecomponents() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const fetchUsers = await axios.get('http://localhost:5000/api/getUser');
+        const fetchUsers = await axios.get('http://localhost:1000/api/getUser');
         const response = fetchUsers.data;
        
         setData(response);
@@ -31,7 +31,7 @@ export default function Tablecomponents() {
   };
   const handleDelete = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/delete/${userId}`);
+      await axios.delete(`http://localhost:1000/api/delete/${userId}`);
      
       fetchData();
     } catch (error) {

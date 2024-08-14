@@ -15,7 +15,7 @@ export default function UpdateComponents() {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const response = await axios.get(`http://localhost:5000/api/getUser/${userId}`);
+        const response = await axios.get(`http://localhost:1000/api/getUser/${userId}`);
         const user = response.data;
         setUsername(user.username);
         setEmail(user.email);
@@ -41,7 +41,7 @@ export default function UpdateComponents() {
         position: position,
       };
 
-      await axios.put(`http://localhost:5000/api/update/${userId}`, updatedUser);
+      await axios.put(`http://localhost:1000/api/update/${userId}`, updatedUser);
       
       alert("updated sucessful");
       navigate('/table');

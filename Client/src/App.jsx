@@ -16,7 +16,7 @@ function App() {
   return (
     
     <Router>
-    <div>
+    <div className='response'>
       <Sidebar />
       <div className="content p-4">
         <Routes>
