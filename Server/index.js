@@ -4,6 +4,7 @@ import {dbConnect} from './Utils/db.js'
 import routers from './routes/router.js';
 import cors from 'cors'
 
+
 dotenv.config();
 const app = express();
 const port = 1000;
